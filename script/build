@@ -1,0 +1,7 @@
+#!/bin/bash -eu
+
+docker build -f docker/test/Dockerfile -t redissample_test:latest .
+docker container run -v $(pwd):/redissample redissample_test:latest
+docker build -f docker/prebuild/Dockerfile -t redissample_prebuild:latest .
+docker container run -v $(pwd):/redissample redissample_prebuild:latest
+docker build -t redissample:latest .
