@@ -1,12 +1,12 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['image', 'build', '-t', 'redissample_test:latest', '.']
+    args: ['build', '-t', 'redissample_test:latest', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['container', 'run', '-v', '/workspace:/redissample', 'redissample_test:latest']
+    args: ['run', '-v', '/workspace:/redissample', 'redissample_test:latest']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['image', 'build', '-t', 'redissample_prebuild:latest', '.']
+    args: ['build', '-t', 'redissample_prebuild:latest', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['container', 'run', '-v', '/workspace:/redissample', 'redissample_prebuild:latest']
+    args: ['run', '-v', '/workspace:/redissample', 'redissample_prebuild:latest']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['image', 'build', '-t', 'asia.gcr.io/harai-kube-sandbox/redissample', '.']
+    args: ['build', '-t', 'asia.gcr.io/harai-kube-sandbox/redissample', '.']
 images: ['asia.gcr.io/harai-kube-sandbox/redissample']
