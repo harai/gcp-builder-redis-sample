@@ -2,7 +2,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-f', 'docker/test/Dockerfile', '-t', 'redissample_test:latest', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['run', '-v', '/workspace:/redissample', '-d', '--name', 'redissample-test', 'redissample_test:latest', '/bin/bash', 'infinity']
+    args: ['run', '-v', '/workspace:/redissample', '-d', '--name', 'redissample-test', 'redissample_test:latest', 'sleep', 'infinity']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['exec', 'redissample-test', 'python', 'test/test_app.py']
   - name: 'gcr.io/cloud-builders/docker'
