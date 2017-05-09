@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  redissample_test:
+    build:
+      context: .
+      dockerfile: docker/test/Dockerfile
+    command: ['sleep', 'infinity']
+    volumes:
+      - .:/redissample
