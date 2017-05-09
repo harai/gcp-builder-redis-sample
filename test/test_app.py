@@ -6,7 +6,9 @@ from redissample import app
 class AppTests(TestCase):
 
   def test_hello(self):
-    self.assertIn('World', app.hello_world())
+    res = app.hello_world()
+    self.assertIn('World', res)
+    self.assertIn('/data/redis-server', res)
 
 
 if __name__ == '__main__':
