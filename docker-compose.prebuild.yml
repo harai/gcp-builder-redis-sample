@@ -1,7 +1,9 @@
 version: '2'
 
 services:
-  redissample_test:
-    image: redissample_prebuild:latest
+  redissample_prebuild:
+    build:
+      context: .
+      dockerfile: docker/prebuild/Dockerfile
     volumes:
-      - ${PWD}:/redissample
+      - .:/redissample
