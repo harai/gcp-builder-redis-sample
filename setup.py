@@ -14,4 +14,4 @@ setuptools.setup(
         'Programming Language :: Python :: 3.6',
     ],
     platforms=['linux'],
-    packages=setuptools.find_packages())
+    packages=['redissample'])
