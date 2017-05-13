@@ -12,7 +12,5 @@ services:
       REDIS_HOST: redis
     links:
       - redis
-    volumes:
-      - .:/redissample
   redis:
     image: redis:3.2.8

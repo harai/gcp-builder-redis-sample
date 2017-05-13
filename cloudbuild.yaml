@@ -1,14 +1,10 @@
 steps:
   - name: 'gcr.io/harai-kube-sandbox/docker-compose:9ef33ee3b07835b568ba4d1bb0befbb1f19db453'
-    args: ['-p', 'redissample', '-f', 'docker-compose.test.yml', 'build']
-  - name: 'gcr.io/harai-kube-sandbox/docker-compose:9ef33ee3b07835b568ba4d1bb0befbb1f19db453'
-    args: ['-p', 'redissample', '-f', 'docker-compose.test.yml', 'up', '-d']
-  - name: 'gcr.io/harai-kube-sandbox/docker-compose:9ef33ee3b07835b568ba4d1bb0befbb1f19db453'
-    args: ['-p', 'redissample', '-f', 'docker-compose.test.yml', 'exec', '-T', 'redissample_test', 'python', 'test/test_app.py']
-  - name: 'gcr.io/harai-kube-sandbox/docker-compose:9ef33ee3b07835b568ba4d1bb0befbb1f19db453'
-    args: ['-p', 'redissample', '-f', 'docker-compose.prebuild.yml', 'build']
-  - name: 'gcr.io/harai-kube-sandbox/docker-compose:9ef33ee3b07835b568ba4d1bb0befbb1f19db453'
-    args: ['-p', 'redissample', '-f', 'docker-compose.prebuild.yml', 'up']
+    args: ['-p', 'redissample', '-f', 'docker-compose.prebuild.yml', 'up', '--build']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'asia.gcr.io/harai-kube-sandbox/redissample', '.']
-images: ['asia.gcr.io/harai-kube-sandbox/redissample']
+  - name: 'gcr.io/harai-kube-sandbox/docker-compose:9ef33ee3b07835b568ba4d1bb0befbb1f19db453'
+    args: ['-p', 'redissample', '-f', 'docker-compose.test.yml', 'up', '--build', '-d']
+  - name: 'gcr.io/harai-kube-sandbox/docker-compose:9ef33ee3b07835b568ba4d1bb0befbb1f19db453'
+    args: ['-p', 'redissample', '-f', 'docker-compose.test.yml', 'exec', '-T', 'redissample_test', 'python', 'test/test_app.py']
+images: ['gcr.io/harai-kube-sandbox/redissample']
